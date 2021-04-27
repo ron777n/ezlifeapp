@@ -1,6 +1,5 @@
 import datetime
 import requests
-import json
 
 class DataBase:
     def __init__(self, p):
