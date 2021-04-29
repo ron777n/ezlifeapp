@@ -1,12 +1,16 @@
 import requests
 from database import DataBase
+import json
 import kivy
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.popup import Popup
+from kivy.core.window import Window
 from kivy.properties import ObjectProperty
 from kivy.uix.boxlayout import BoxLayout
+
+Window.size = (370, 810)
 
 class Create(Screen):
     namee = ObjectProperty(None)
