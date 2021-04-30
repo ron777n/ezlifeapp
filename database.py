@@ -4,14 +4,15 @@ import json
 import time
 
 class DataBase:
-    def __init__(self):
+    def __init__(self, url="https://ezapp-3e11d-default-rtdb.firebaseio.com", auth="IL0pb9MSHelIUVnVLoHHKm4tyckCbEZLNSzzQ477"):
         self.users = None
-        self.url = "https://ezapp-3e11d-default-rtdb.firebaseio.com"
+        self.url = url
+        self.auth = auth
 
         databass = ''
         while databass == '':
             try:
-                self.databass = requests.get(self.url + "/users/.json").json()
+                self.databass = requests.get(self.url + "/users/.json" + "?auth=" + self.auth).json()
                 break
             except:
                 print("Connection refused by the server..")

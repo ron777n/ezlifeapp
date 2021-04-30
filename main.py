@@ -116,7 +116,7 @@ def invalidForm():
 
 def data():
     global db
-    db = DataBase()
+    db = DataBase("https://ezapp-3e11d-default-rtdb.firebaseio.com", "IL0pb9MSHelIUVnVLoHHKm4tyckCbEZLNSzzQ477")
 
 def invalidLogin():
     pop = Popup(title='Invalid Login',

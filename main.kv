@@ -1,0 +1,190 @@
+<WindowManeger>
+
+<LoginWin>:
+
+    name: "login"
+
+    email: email
+    password : password
+
+    FloatLayout:
+
+        #Video:
+         #   source:"videos\\test.mp4"
+          #  size_hint:0.9,0.2
+           # pos_hint:{"top":0.93, "x":0.05}
+            #state:"play"
+
+
+        Label:
+            text: "EZlife"
+            pos_hint:{"top":0.67, "x":0.1}
+            size_hint:0.8,0.15
+            font_size:45
+            background_color: (1, 1, 1, 1)
+            color:(0,0,0,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size:self.size
+                    pos: self.pos
+
+        Button:
+            text: "sign up"
+            on_release: root.login()
+            pos_hint:{"top":0.5, "x":0.3}
+            size_hint:0.4,0.05
+
+        BoxLayout:
+            pos_hint:{"top":0.425}
+
+            size_hint:1,0.3
+
+            orientation: 'vertical'
+
+            GridLayout:
+
+                cols:2
+
+                padding:12
+
+                spacing:12
+
+                TextInput:
+                    hint_text:"email"
+                    id:email
+                    multiline:False
+                    #pos_hint:{"top":0.425, "x":0.15}
+                    #size_hint:0.3,0.05
+
+                TextInput:
+                    hint_text:"password"
+                    id:password
+                    multiline:False
+                    #pos_hint:{"top":0.425, "x":0.6}
+                    #size_hint:0.3,0.05
+
+            Button:
+                text: "Log in"
+                pos_hint:{"top":1, "x":0.27}
+                size_hint:0.45,0.9
+                on_release:
+                    root.loginBtn()
+
+
+
+
+
+#        Button:
+#            text:"forgot code"
+
+
+<create>:
+
+    name: "create"
+
+    namee: namee
+
+    email: mail
+
+    password: password
+
+    BoxLayout:
+
+        orientation: 'vertical'
+
+        spacing:10
+
+        GridLayout:
+
+            cols:2
+
+            spacing:10
+
+            TextInput:
+                hint_text:"name"
+                id:namee
+
+            TextInput:
+                hint_text:"Email"
+                id:mail
+
+            TextInput:
+                id:password
+                hint_text:"password"
+
+            Button:
+                text:"submit"
+                on_release:
+                    root.submit()
+
+        Button:
+            text:"Already have an account? \ngo back"
+            on_release:
+                root.login()
+
+<MainWin>:
+
+    welcome: welcome
+
+    name: "MainWin"
+
+
+    FloatLayout:
+        Label:
+            text: ""
+            id: welcome
+            size_hint: (0.5, 0.2)
+            pos_hint:{"right":0.75, "top":1}
+            canvas.before:
+                Color:
+                    rgba: 0.6, 0.6, 0.6, 0.5
+                Rectangle:
+                    size:self.size
+                    pos: self.pos
+
+        Button:
+            text: "sidebar"
+            on_release:
+                root.menu()
+            size_hint: (0.2, 0.075)
+            pos_hint: {"left":0.2, "top":1}
+
+        BoxLayout:
+
+            orientation:"vertical"
+
+            size_hint: (0.5, 0.8)
+            pos_hint:{"right":0.75, "top":0.8}
+
+            BoxLayout:
+                Label:
+                    text:"ya yeet"
+            BoxLayout:
+                Label:
+                    text:"yo yeet"
+            BoxLayout:
+                Label:
+                    text:"yer yeet"
+
+            Button:
+                text: "Back"
+                on_release:
+                    root.LogOut()
+
+<SideBar>:
+    canvas.before:
+        Color:
+            rgba: 1, 0, 0, .6
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    size_hint: (0.2, 0.93)
+    pos_hint: {'left': 0.95}
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text:"library"
+            on_release:
+                root.library()
