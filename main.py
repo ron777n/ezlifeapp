@@ -96,7 +96,6 @@ class WinManager(ScreenManager):
 kv = Builder.load_file("main.txt")
 
 sm = WinManager()
-db = DataBase("users.txt")
 
 screens = [LoginWin(name="login"), MainWin(name="MainWin"), Create(name="create"), Library(name="Library")]
 for screen in screens:
@@ -105,6 +104,8 @@ for screen in screens:
 class EZlifeApp(App):
     def build(self): #todo add logo's to each of the other apps
         return sm
+    def on_start(self):
+        data()
 
 def invalidForm():
     pop = Popup(title='Invalid Form',
@@ -113,11 +114,17 @@ def invalidForm():
 
     pop.open()
 
+def data():
+    global db
+    db = DataBase()
+
 def invalidLogin():
     pop = Popup(title='Invalid Login',
                   content=kivy.uix.label.Label(text='Invalid email or password.'),
                   size_hint=(None, None), size=(400, 400))
     pop.open()
+
+db = ""
 
 if __name__ == "__main__":
     EZlifeApp().run()

@@ -4,7 +4,7 @@ import json
 import time
 
 class DataBase:
-    def __init__(self, p):
+    def __init__(self):
         self.users = None
         self.url = "https://ezapp-3e11d-default-rtdb.firebaseio.com"
 
