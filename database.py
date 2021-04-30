@@ -1,16 +1,32 @@
 import datetime
 import requests
+import json
+import time
 
 class DataBase:
     def __init__(self, p):
         self.users = None
         self.url = "https://ezapp-3e11d-default-rtdb.firebaseio.com"
-        self.databass = requests.get(self.url + "/users/.json").json()
+
+        databass = ''
+        while databass == '':
+            try:
+                self.databass = requests.get(self.url + "/users/.json").json()
+                break
+            except:
+                print("Connection refused by the server..")
+                print("waiting for 2 and a half seconds")
+                time.sleep(2.5)
+                print("retrying")
+                continue
+
         print(self.databass)
         self.load()
 
     def load(self):
         self.users = {}
+
+
 
         for user in self.databass:
             password = self.databass[user]["password"]
