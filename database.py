@@ -3,8 +3,10 @@ import requests
 import json
 import time
 
-class DataBase:
-    def __init__(self, url="https://ezapp-3e11d-default-rtdb.firebaseio.com", auth="IL0pb9MSHelIUVnVLoHHKm4tyckCbEZLNSzzQ477"):
+
+class Users:
+    def __init__(self, url="https://ezapp-3e11d-default-rtdb.firebaseio.com",
+                 auth="IL0pb9MSHelIUVnVLoHHKm4tyckCbEZLNSzzQ477"):
         self.users = None
         self.url = url
         self.auth = auth
@@ -14,7 +16,8 @@ class DataBase:
             try:
                 self.databass = requests.get(self.url + "/users/.json" + "?auth=" + self.auth).json()
                 break
-            except:
+            except Exception as e:
+                print(e)
                 print("Connection refused by the server..")
                 print("waiting for 2 and a half seconds")
                 time.sleep(2.5)
@@ -27,13 +30,13 @@ class DataBase:
     def load(self):
         self.users = {}
 
-
-
         for user in self.databass:
             password = self.databass[user]["password"]
             name = self.databass[user]["name"]
             created = self.databass[user]["created"]
-            self.users[user] = {"password": password, "name" : name, "created" : created}
+            self.users[user] = {"password": password, "name": name, "created": created}
+            if "last_pages" in self.databass[user]:
+                self.users[user]["last_pages"] = self.databass[user]["last_pages"]
 
     def get_user(self, email):
         if email in self.users:
@@ -43,7 +46,8 @@ class DataBase:
 
     def add_user(self, email, password, name):
         if email.strip() not in self.users:
-            self.users[email.strip().replace(".", "-")] = {"password" : password.strip(), "name" : name.strip(), "created" : DataBase.get_date()}
+            self.users[email.strip().replace(".", "-")] = {"password": password.strip(), "name": name.strip(),
+                                                           "created": Users.get_date()}
             self.save()
             return 1
         else:
@@ -57,11 +61,30 @@ class DataBase:
             return False
 
     def save(self):
-        #print("users: " + str(type(self.users)) + str(self.users))
-        print(requests.patch(url= self.url + "/users/.json", json = self.users))
+        print(requests.patch(url=self.url + "/users/.json", json=self.users))
+
+    def show_users(self):
+        print(self.users)
 
     @staticmethod
     def get_date():
         return str(datetime.datetime.now()).split(" ")[0]
 
 
+class Tutorials:
+    def __init__(self, filename, extentions=None):
+        self.filename = filename
+        self.load()
+
+    def load(self):
+
+        with open(self.filename) as json_file:
+            self.databass = json.load(json_file)["tutorials"]
+
+        print(self.databass)
+
+    def get_tutorial(self, key):
+        if key in self.databass:
+            return self.databass[key]
+        else:
+            return "tutorial not found"

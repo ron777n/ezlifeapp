@@ -1,0 +1,55 @@
+{"tutorials":{
+  "test1": {
+    "text1": {"text":"this is the first test"},
+    "text2": {"text":"this is the second part of the first test"},
+    "button1": {"text": "back", "on_release": "back"}
+  },
+
+  "test2": {
+  "button1": {"text":"this is a button", "on_release": "def main(): \n  print('HA HA')"},
+  "button2": {"text":"back", "on_release": "back"}
+},
+  "test3": {
+    "input1": {"hint_text":"this is a text input"},
+    "input2": {"hint_text":"this is another text input"},
+    "button1": {"text": "back", "on_release": "back"}
+  },
+  "test4": {
+    "text1": {
+      "text":"this is the forth test",
+      "pos_hint":{"top":1, "x":0.27},
+      "size_hint":[0.45,0.9]
+    },
+    "text2": {"text":"this is the second part of the forth test",
+    "pos_hint":{"top":1},
+    "size_hint":[1,0.2]
+    },
+    "button1": {"text": "back", "on_release": "back", "pos_hint": {"bottom": 1}, "size_hint": [1,0.2]}
+  },
+  "test5": {
+    "button1": {
+      "text": "this is the forth test",
+      "pos_hint": {"top": 1, "x": 0.27},
+      "size_hint": [0.45, 0.9],
+      "on_release": "back"
+    },
+    "button2": {
+      "text": "this is the second part of the forth test",
+      "pos_hint": {"top": 1},
+      "size_hint": [1, 0.2]
+    }
+  },
+  "test6": {
+    "input1": {
+      "text": "this is the forth test",
+      "pos_hint": {"top": 1, "x": 0.27},
+      "size_hint": [0.45, 0.9]
+    },
+    "input2": {
+      "text": "this is the second part of the forth test",
+      "pos_hint": {"top": 1},
+      "size_hint": [1, 0.2]
+    },
+    "button1": {"text": "back", "on_release": "back", "pos_hint": {"bottom": 1}, "size_hint": [1,0.2]}
+  }
+}}
