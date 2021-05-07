@@ -10,9 +10,6 @@ from kivy.core.window import Window
 from kivy.properties import ObjectProperty
 from kivy.uix.boxlayout import BoxLayout
 
-Window.size = (370, 810)
-
-
 class Create(Screen):
     namee = ObjectProperty(None)
     email = ObjectProperty(None)
